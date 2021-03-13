@@ -11,3 +11,7 @@ print(results[0].labels[0])
 print(results[0].formats[0])
 for x in results[0].tracklist:
     print(x)
+print(results[0].data['num_for_sale'])
+print(results[0].data['lowest_price'])
+print(results[0].data['year'])
+print(results[0].data['country'])
