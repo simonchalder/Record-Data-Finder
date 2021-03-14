@@ -1,8 +1,11 @@
 # Record-Data-Finder
 
 Developer: Simon Chalder
+
 Project Start Date: March 2021
+
 GitHub Url: https://github.com/simonchalder/Record-Data-Finder
+
 Dicogs Client Page: https://github.com/joalla/discogs_client
 
 This is a simple application which will allow the user to discover detailed data about a record by inputting information into the app.
