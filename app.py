@@ -1,20 +1,53 @@
+#Imports
+
 from dotenv import load_dotenv
 import os
 import discogs_client
-print('USER_TOKEN' in os.environ)
+
+# API Call
 d = discogs_client.Client('RecordDataFinder/0.1', user_token=os.environ['USER_TOKEN'])
 
-results = d.search('Physical Graffiti', type='release')
-#print(dir(results[0].artists[0]))
-print(results[0].artists[0])
-print(results[0].labels[0])
-print(results[0].formats[0])
-for x in results[0].tracklist:
-    print(x)
-print(results[0].data['num_for_sale'])
-print(results[0].data['lowest_price'])
-print(results[0].data['year'])
-print(results[0].data['country'])
+search_term = input("Enter Artist Name: ")
 
-#for y in results:
-#    print(y)
+results = d.search(search_term,type='artist')
+
+artist_id = results[0].id
+
+artist = d.artist(artist_id)
+for y in artist.releases:
+    print(y)
+
+release_search = input("Enter Release Code: ")
+record = d.release(release_search)
+
+title = record.title
+tracklist = record.tracklist
+url = record.url
+formats = record.formats
+
+try:
+    num_for_sale = record.data['num_for_sale']
+except Exception:
+    num_for_sale = "N/A"
+
+try:
+    lowest_price = record.data['lowest_price']
+except Exception:
+    lowest_price = "N/A"
+
+try:
+    year = record.data['year']
+except Exception:
+    year = "N/A"
+
+try:
+    country = record.data['country']
+except Exception:
+    country = "N/A"
+
+try:
+    catno = record.data['catno']
+except Exception:
+    catno = "N/A"
+
+print(catno)
