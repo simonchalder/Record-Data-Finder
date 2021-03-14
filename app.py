@@ -50,4 +50,16 @@ try:
 except Exception:
     catno = "N/A"
 
-print(catno)
+print("Title: " + title)
+print("Discogs URL: " + url)
+print("Formats: ")
+for x in formats:
+    print(x)
+print("Tracklist:")
+for x in tracklist:
+    print(x)
+print("Year: " + str(year))
+print("Country: " + country)
+print("Catalogue No: " + str(catno))
+print("Number for sale: " + str(num_for_sale))
+print("Lowest price ($): " + str(lowest_price))
