@@ -2,10 +2,12 @@
 
 from dotenv import load_dotenv
 import os
+import time
 import discogs_client
 from tkinter import *
 
 root = Tk() # Create the window widget
+root.geometry('700x850')
 root.title("Record Data Finder")
 
 d = discogs_client.Client('RecordDataFinder/0.1', user_token=os.environ['USER_TOKEN'])
@@ -14,33 +16,128 @@ def clicked():
     results = d.search(artist_input.get(),type='artist')
     artist_id = results[0].id
     artist = d.artist(artist_id)
-    i = 1
+    
     for x in artist.releases:
-        releases_box.insert(i, x)
+        release_box.insert(1, x)
         
+def submit():
+    record = d.release(release_input.get())
+    title = record.title
+    tracklist = record.tracklist
+    url = record.url
+    formats = record.formats
 
+    try:
+        num_for_sale = record.data['num_for_sale']
+    except Exception:
+        num_for_sale = "N/A"
 
+    try:
+        lowest_price = record.data['lowest_price']
+    except Exception:
+        lowest_price = "N/A"
 
+    try:
+        year = record.data['year']
+    except Exception:
+        year = "N/A"
 
+    try:
+        country = record.data['country']
+    except Exception:
+        country = "N/A"
+
+    try:
+        catno = record.data['catno']
+    except Exception:
+        catno = "N/A"
+
+    title_box.insert(1, "Title: " + title)
+    for x in tracklist:
+        tracklist_box.insert(7, x)
+    time.sleep(.200)
+    url_box.insert(8, "Discogs URL: " + url)
+    for y in formats:
+        format_box.insert(9, y)
+    time.sleep(.200)
+    sales_box.insert(2, "Number currently for sale: " + str(num_for_sale))
+    price_box.insert(3, "Lowest current price ($): " + str(lowest_price))
+    year_box.insert(4, "Released: " + str(year))
+    country_box.insert(5, "Country: " + country)
+    catno_box.insert(6, "Catalogue No.: " + str(catno))
 
 
 
 artist_input = Entry(root, width=50)
+artist_input.insert(0,"Enter artists name here")
 artist_input.pack()
 
 artist_button = Button(root, text="Submit", padx=20, pady=10, command=clicked)
 artist_button.pack()
 
-releases_box = Listbox(root, xscrollcommand=True, yscrollcommand=True)
-releases_box.pack()
+release_box = Listbox(root, width=90)
+release_box.pack()
 
+release_input = Entry(root, width=50)
+release_input.insert(0,"Enter release number")
+release_input.pack()
 
+release_button = Button(root, text="Submit", padx=20, pady=10, command=submit)
+release_button.pack()
 
+title_label = Label(root, text="Title")
+title_label.pack()
 
+title_box = Listbox(root, width=90, height=1)
+title_box.pack()
 
+tracks_label = Label(root, text="Tracklist")
+tracks_label.pack()
 
+tracklist_box = Listbox(root, width=90)
+tracklist_box.pack()
 
+url_label = Label(root, text="Discogs Url")
+url_label.pack()
 
+url_box = Listbox(root, width=90, height=1)
+url_box.pack()
+
+format_label = Label(root, text="Formats")
+format_label.pack()
+
+format_box = Listbox(root, width=90, height=3)
+format_box.pack()
+
+sales_label = Label(root, text="Number currently for sale")
+sales_label.pack()
+
+sales_box = Listbox(root, width=90, height=1)
+sales_box.pack()
+
+price_label = Label(root, text="Lowest current price ($)")
+price_label.pack()
+
+price_box = Listbox(root, width=90, height=1)
+price_box.pack()
+
+year_label = Label(root, text="Year released")
+year_label.pack()
+
+year_box = Listbox(root, width=90, height=1)
+year_box.pack()
+
+country_label = Label(root, text="Country")
+country_label.pack()
+
+country_box = Listbox(root, width=90, height=1)
+country_box.pack()
+
+catno_label = Label(root, text="Catalogue number")
+catno_label.pack()
+
+catno_box = Listbox(root, width=90, height=1)
+catno_box.pack()
 
 root.mainloop()
 
