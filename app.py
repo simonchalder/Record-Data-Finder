@@ -12,7 +12,7 @@ from PIL import ImageTk,Image
 # -------------------------------------------------------------------------------------------
 
 root = Tk() # Create the window widget
-root.geometry('1290x850') # width and height of app window
+root.geometry('1290x850+300+100') # width and height of app window
 root.title("Record Data Finder") # menu bar title
 root.iconbitmap("./app_logo.ico")
 messagebox.showinfo("Information","Record Data Finder, an App by Simon Chalder")
