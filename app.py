@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import os
 import discogs_client
 from tkinter import *
+from tkinter import messagebox
 from PIL import ImageTk,Image
 
 # Tkinter app window creation
@@ -11,10 +12,10 @@ from PIL import ImageTk,Image
 # -------------------------------------------------------------------------------------------
 
 root = Tk() # Create the window widget
-root.geometry('1290x800') # width and height of app window
+root.geometry('1290x850') # width and height of app window
 root.title("Record Data Finder") # menu bar title
 root.iconbitmap("./app_logo.ico")
-
+messagebox.showinfo("Information","Record Data Finder, an App by Simon Chalder")
 # -------------------------------------------------------------------------------------------
 
 # Discogs API call using Discogs client
@@ -34,10 +35,15 @@ def clicked(): # function will be called when artist search button is clicked
     artist_id = results[0].id # Taking the first artist result and storing it in a variable
     artist = d.artist(artist_id) # Finding the releases associated with the artist
     
-    for x in artist.releases:
-        release_box.insert(1, x) # insert the results of the artist search into the release box
+    for y in artist.releases:
+        x = str(y)
+        if 'Master' in x:
+            release_box.insert(0, x)
+        else:
+            continue
         
 def submit(): # Function will be called when the release search button is clicked
+    
     record = d.master(release_input.get()) # release search to discogs API using release number given in release input box
     
     title = record.title # Variable creation for various release fields
