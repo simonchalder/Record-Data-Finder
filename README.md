@@ -16,7 +16,7 @@ The application now uses a Tkinter GUI for better user usability
 
 The user can now:
 
-- input the name of an artist and be presented with a list of releases by that artist
+- Input the name of an artist and be presented with a list of releases by that artist
 
 - Take the release number from the list of releases and search for information about that particular release
 
@@ -24,7 +24,7 @@ The user can now:
 
 Data the app is currently able to provide about a particular release:
 
-- title
+- Title
 
 - Discogs.com url
 
@@ -34,7 +34,7 @@ Data the app is currently able to provide about a particular release:
 
 - Number for sale currently on Discogs.com
 
-- The lowest price currently in $US
+- The lowest price currently in $USD
 
 - The year of the release
 

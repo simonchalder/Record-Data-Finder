@@ -13,60 +13,79 @@
 #for y in results:
 #    print(y)
 
-['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_known_invalid_keys', 'artists', 'changes', 'client', 'companies', 'country', 'credits', 'data', 'data_quality', 'delete', 'fetch', 'formats', 'genres', 'id', 'images', 'labels', 'master', 'notes', 'refresh', 'save', 'status', 'styles', 'thumb', 'title', 'tracklist', 'url', 'videos', 'year']
+['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_known_invalid_keys', 'changes', 'client', 'data', 'data_quality', 'delete', 'fetch', 'genres', 'id', 'images', 'main_release', 'refresh', 'save', 'styles', 'title', 'tracklist', 'url', 'versions', 'videos']
 
 Working Code
 
-#Imports
+# # API Call
+# d = discogs_client.Client('RecordDataFinder/0.1', user_token=os.environ['USER_TOKEN'])
 
-from dotenv import load_dotenv
-import os
-import discogs_client
+# #Get user input for artist
+# search_term = input("Enter Artist Name: ")
 
-# API Call
-d = discogs_client.Client('RecordDataFinder/0.1', user_token=os.environ['USER_TOKEN'])
+# #Create a results object which contains the results of the artist search
+# results = d.search(search_term,type='artist')
 
-search_term = input("Enter Artist Name: ")
+# #Createa new variable 'artist_id' and assign it the first result from the artist search
+# artist_id = results[0].id
 
-results = d.search(search_term,type='artist')
+# #Create an 'artist' object which contains all data about the artist
+# artist = d.artist(artist_id)
 
-artist_id = results[0].id
+# #Loop through the artist releases and print to the console
+# for y in artist.releases:
+#     print(y)
+#  #User input for the requested release
+# release_search = input("Enter Release Code: ")
 
-artist = d.artist(artist_id)
-for y in artist.releases:
-    print(y)
+# #Create a record object with the results of the release search
+# record = d.release(release_search)
 
-release_search = input("Enter Release Code: ")
-record = d.release(release_search)
+# #Variable creation for release search results
+# title = record.title
+# tracklist = record.tracklist
+# url = record.url
+# formats = record.formats
 
-title = record.title
-tracklist = record.tracklist
-url = record.url
-formats = record.formats
+# #More variables with exception handling as they may not exist in the search results
+# try:
+#     num_for_sale = record.data['num_for_sale']
+# except Exception:
+#     num_for_sale = "N/A"
 
-try:
-    num_for_sale = record.data['num_for_sale']
-except Exception:
-    num_for_sale = "N/A"
+# try:
+#     lowest_price = record.data['lowest_price']
+# except Exception:
+#     lowest_price = "N/A"
 
-try:
-    lowest_price = record.data['lowest_price']
-except Exception:
-    lowest_price = "N/A"
+# try:
+#     year = record.data['year']
+# except Exception:
+#     year = "N/A"
 
-try:
-    year = record.data['year']
-except Exception:
-    year = "N/A"
+# try:
+#     country = record.data['country']
+# except Exception:
+#     country = "N/A"
 
-try:
-    country = record.data['country']
-except Exception:
-    country = "N/A"
+# try:
+#     catno = record.data['catno']
+# except Exception:
+#     catno = "N/A"
 
-try:
-    catno = record.data['catno']
-except Exception:
-    catno = "N/A"
+# #Print final data to the console
 
-print(catno)
+# print("\n******** Record Data Finder **********\n")
+# print("Title: " + title)
+# print("Discogs URL: " + url)
+# print("Formats: ")
+# for x in formats:
+#     print(x)
+# print("Tracklist:")
+# for x in tracklist:
+#     print(x)
+# print("Year: " + str(year))
+# print("Country: " + country)
+# print("Catalogue No: " + str(catno))
+# print("Number for sale: " + str(num_for_sale))
+# print("Lowest price ($): " + str(lowest_price))
