@@ -35,7 +35,7 @@ def clicked(): # function will be called when artist search button is clicked
     artist_id = results[0].id # Taking the first artist result and storing it in a variable
     artist = d.artist(artist_id) # Finding the releases associated with the artist
     
-    for y in artist.releases:
+    for y in artist.releases: # Filter search results to show master releases only
         x = str(y)
         if 'Master' in x:
             release_box.insert(0, x)

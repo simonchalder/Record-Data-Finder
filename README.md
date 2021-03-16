@@ -30,7 +30,7 @@ Data the app is currently able to provide about a particular release:
 
 - A list of tracks
 
-- All formats for that release
+- The format for that release
 
 - Number for sale currently on Discogs.com
 
@@ -43,8 +43,6 @@ Data the app is currently able to provide about a particular release:
 - The record label catalogue number
 
 Issues / still to-do:
-
-Currently the results displayed do not differentiate between master releases and all releases
 
 Add more data fields such as info about the record label etc.
 
