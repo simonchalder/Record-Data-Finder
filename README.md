@@ -1,6 +1,6 @@
 # Record-Data-Finder
 
-![app_logo](https://user-images.githubusercontent.com/66743889/112197507-12e9c480-8c04-11eb-9532-8f360496f213.png)
+![app_logo1](https://user-images.githubusercontent.com/66743889/112198860-76282680-8c05-11eb-85e3-cd0990ac59a4.png)
 
 Developer: Simon Chalder
 
@@ -15,6 +15,8 @@ This is a simple application which will allow the user to discover detailed data
 The application uses the Python Discogs Client to interact with the Discogs API
 
 The application now uses a Tkinter GUI for better user usability
+
+![cc](https://user-images.githubusercontent.com/66743889/112198158-bc30ba80-8c04-11eb-9d52-cf0074079ca2.png)
 
 The user can now:
 
