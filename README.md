@@ -1,5 +1,7 @@
 # Record-Data-Finder
 
+![app_logo](https://user-images.githubusercontent.com/66743889/112197507-12e9c480-8c04-11eb-9532-8f360496f213.png)
+
 Developer: Simon Chalder
 
 Project Start Date: March 2021
