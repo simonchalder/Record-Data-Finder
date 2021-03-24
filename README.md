@@ -18,7 +18,7 @@ The application now uses a Tkinter GUI for better user usability
 
 ![cc](https://user-images.githubusercontent.com/66743889/112198158-bc30ba80-8c04-11eb-9d52-cf0074079ca2.png)
 
-The user can now:
+***The user can now:***
 
 - Input the name of an artist and be presented with a list of releases by that artist
 
@@ -46,10 +46,10 @@ Data the app is currently able to provide about a particular release:
 
 - The record label catalogue number
 
-Issues / still to-do:
+***Issues / still to-do:***
 
 Add more data fields such as info about the record label etc.
 
-Aesthetic changes and improvements to the GUI
+Aesthetic changes and improvements to the GUI - may improve Tkinter GUI or 'upgrade' to PyQT5
 
 Testing
